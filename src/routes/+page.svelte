@@ -1,5 +1,8 @@
 <script>
-	import { Gallery } from 'flowbite-svelte';
+	import GitHubCard from '$lib/components/GitHubCard.svelte';
 </script>
 
-<!-- <Gallery items={images} class="gap-4 grid-cols-2 md:grid-cols-3" /> -->
+<div class="flex gap-16 flex-wrap">
+	<GitHubCard repoName="viaplay-keyboard-shortcuts" />
+	<GitHubCard repoName="svelte-entity-store" />
+</div>

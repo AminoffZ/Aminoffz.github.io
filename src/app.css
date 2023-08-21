@@ -1,0 +1,7 @@
+footer > span {
+	text-align: center !important;
+}
+
+footer > ul > button {
+	text-wrap: nowrap;
+}
