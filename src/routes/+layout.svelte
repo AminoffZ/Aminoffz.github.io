@@ -1,51 +1,56 @@
 <script lang="ts">
+	import PrivacyPolicy from '$lib/components/PrivacyPolicy.svelte';
+	import { getGithub } from '$lib/fetchers/github-fetcher';
 	import {
 		Avatar,
 		Footer,
 		FooterCopyright,
 		FooterLinkGroup,
 		Modal,
-		NavHamburger,
-		NavLi,
-		NavUl,
+		NavBrand,
 		Navbar
 	} from 'flowbite-svelte';
-	import style from '../app.css';
-	const user = import.meta.env.VITE_USER;
-	import { getGithub } from '$lib/fetchers/github-fetcher';
 	import '../app.postcss';
-	import PrivacyPolicy from '$lib/components/PrivacyPolicy.svelte';
+	import '../app.css';
+	const user = import.meta.env.VITE_USER;
 	let clickOutsideModal = false;
 </script>
 
 <Navbar class="sticky" let:hidden let:toggle>
 	<div class="flex gap-4">
 		{#await getGithub(user)}
-			<Avatar border />
+			<div class="ml-4">
+				<Avatar style="padding: 0" border />
+			</div>
 		{:then data}
-			<Avatar border src={data.avatar_url} />
+			<div class="ml-4">
+				<Avatar style="padding: 0" border src={data.avatar_url} />
+			</div>
 		{/await}
-
-		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{user}</span>
+		<NavBrand href="/">
+			<span class="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white"
+				>{user}</span
+			>
+		</NavBrand>
 	</div>
 
-	<NavHamburger on:click={toggle} />
+	<!-- <NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
 		<NavLi href="/">Home</NavLi>
 		<NavLi href="/docs">Docs</NavLi>
-	</NavUl>
+	</NavUl> -->
 </Navbar>
 
-<div class="p-24" style="height: calc(100vh - 71.99px);">
+<div style="min-height: calc(100vh - 71.99px);">
 	<slot />
 </div>
 
 <Footer class="min-w-min">
-	<FooterCopyright class="p-2" href="/" by={user} year={2023} />
+	<FooterCopyright class="p-2" by={user} year={2023} />
 	<FooterLinkGroup class="p-2 flex text-sm gap-4 text-gray-500 dark:text-gray-400 justify-center">
 		<button on:click={() => (clickOutsideModal = true)}>Privacy Policy</button>
-		<button>Licensing</button>
-		<button>Contact</button>
+		<button disabled>Licensing</button>
+		<button disabled>Contact</button>
 	</FooterLinkGroup>
 </Footer>
 

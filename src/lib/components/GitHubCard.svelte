@@ -2,7 +2,9 @@
 	import { Card, Button } from 'flowbite-svelte';
 	import { Icon } from 'flowbite-svelte-icons';
 	import { getGithub } from '../fetchers/github-fetcher';
+	import { navigate } from '$lib/helpers/navigator';
 	export let repoName = '';
+	export let hasDocs = false;
 	const user = import.meta.env.VITE_USER;
 </script>
 
@@ -18,10 +20,19 @@
 			{data.description}
 		</p>
 		<div class="flex gap-4 mt-auto">
-			<Button on:click={() => {}} style="height: 40px" class="h-10 w-24">
+			<Button
+				disabled={!hasDocs}
+				on:click={() => navigate(`/${repoName}`)}
+				style="height: 40px"
+				class="h-10 w-24"
+			>
 				Docs <Icon name="arrow-right-outline" class="w-3.5 h-3.5 ml-2 text-white" />
 			</Button>
-			<Button color="dark" on:click={() => {}} class="w-28 h-10">
+			<Button
+				color="dark"
+				on:click={() => navigate(`https://github.com/${user}/${repoName}`)}
+				class="w-28 h-10"
+			>
 				GitHub
 				<Icon name="arrow-right-outline" class="w-3.5 h-3.5 ml-2 text-white" />
 			</Button>
