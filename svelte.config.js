@@ -8,6 +8,9 @@ const config = {
 	preprocess: [vitePreprocess({})],
 
 	kit: {
+		prerender: {
+			handleMissingId: 'ignore'
+		},
 		adapter: adapter()
 	}
 };

@@ -17,7 +17,6 @@ export async function getGitHub(user: string, repo?: string): Promise<GitHubUser
 		: `https://api.github.com/users/${user}`;
 	const response = await fetch(url, getAuth());
 	const data = await response.json();
-	console.log(data);
 	return data;
 }
 
