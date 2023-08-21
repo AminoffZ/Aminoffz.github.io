@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PrivacyPolicy from '$lib/components/PrivacyPolicy.svelte';
-	import { getGithub } from '$lib/fetchers/github-fetcher';
+	import { getGitHub } from '$lib/fetchers/github-fetcher';
 	import {
 		Avatar,
 		Footer,
@@ -8,17 +8,24 @@
 		FooterLinkGroup,
 		Modal,
 		NavBrand,
+		NavHamburger,
+		NavLi,
+		NavUl,
 		Navbar
 	} from 'flowbite-svelte';
 	import '../app.postcss';
 	import '../app.css';
 	const user = import.meta.env.VITE_USER;
 	let clickOutsideModal = false;
+
+	function setDestination() {
+		window.location.hash = 'section-repos';
+	}
 </script>
 
 <Navbar class="sticky" let:hidden let:toggle>
 	<div class="flex gap-4">
-		{#await getGithub(user)}
+		{#await getGitHub(user)}
 			<div class="ml-4">
 				<Avatar style="padding: 0" border />
 			</div>
@@ -34,14 +41,14 @@
 		</NavBrand>
 	</div>
 
-	<!-- <NavHamburger on:click={toggle} />
+	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi href="/">Home</NavLi>
+		<NavLi href="#section-repos" on:click={setDestination}>Repos</NavLi>
 		<NavLi href="/docs">Docs</NavLi>
-	</NavUl> -->
+	</NavUl>
 </Navbar>
 
-<div style="min-height: calc(100vh - 71.99px);">
+<div style="min-height: calc(100vh - 71.99px);" class="flex flex-col justify-center align-middle">
 	<slot />
 </div>
 

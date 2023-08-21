@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card, Button } from 'flowbite-svelte';
 	import { Icon } from 'flowbite-svelte-icons';
-	import { getGithub } from '../fetchers/github-fetcher';
+	import { getGitHub } from '../fetchers/github-fetcher';
 	import { navigate } from '$lib/helpers/navigator';
 	export let repoName = '';
 	export let hasDocs = false;
@@ -10,7 +10,7 @@
 
 <Card class="w-96">
 	<Icon name="github-solid" />
-	{#await getGithub(user, repoName)}
+	{#await getGitHub(user, repoName)}
 		<div>Loading...</div>
 	{:then data}
 		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

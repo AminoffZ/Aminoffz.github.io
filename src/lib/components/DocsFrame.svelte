@@ -15,13 +15,6 @@
 	});
 </script>
 
-<iframe
-	title="doc"
-	id="test"
-	on:load={(a) => console.log(a)}
-	src={`/docs/${repoName}/index.html`}
-	width="100%"
-	frameborder="0"
-/>
+<iframe title="doc" id="test" src={`/docs/${repoName}/index.html`} width="100%" frameborder="0" />
 
 <svelte:window on:resize={setHeight} />
