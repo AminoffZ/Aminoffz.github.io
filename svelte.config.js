@@ -12,7 +12,7 @@ const config = {
 			handleMissingId: 'ignore'
 		},
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/Aminoffz.github.io' : ''
+			base: process.env.DEPLOY_GHPAGES ? '/Aminoffz.github.io' : ''
 		},
 		adapter: adapter()
 	}
