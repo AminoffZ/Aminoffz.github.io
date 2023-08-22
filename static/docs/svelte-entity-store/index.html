@@ -58,22 +58,16 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<div align="center">
-					<a href="https://npmjs.org/package/svelte-entity-store">
-						<img src="https://badgen.now.sh/npm/v/svelte-entity-store" alt="version" />
-					</a>
-					<a href="https://github.com/tony-sull/svelte-entity-store/actions">
-						<img src="https://github.com/tony-sull/svelte-entity-store/workflows/CI/badge.svg" alt="CI" />
-					</a>
-					<a href="https://codecov.io/gh/tony-sull/svelte-entity-store">
-						<img src="https://codecov.io/gh/tony-sull/svelte-entity-store/branch/main/graph/badge.svg" alt="codecov">
-					</a>
-				</div>
 				<a href="#svelte-entity-store" id="svelte-entity-store" style="color: inherit; text-decoration: none;">
 					<h1>Svelte Entity Store</h1>
 				</a>
 				<p>A (<strong>w</strong>ork-<strong>i</strong>n-<strong>p</strong>rogress) generic entity store for Svelte projects.</p>
-				<p>Check out the <a href="https://tony-sull.github.io/svelte-entity-store/">full docs</a> for details.</p>
+				<p>Check out the <a href="https://aminoffz.github.io/svelte-entity-store">full docs</a> for details.</p>
+				<a href="#this-fork-🍴" id="this-fork-🍴" style="color: inherit; text-decoration: none;">
+					<h2>This Fork 🍴</h2>
+				</a>
+				<p>Updated to work with latest version of SvelteKit (tested and working on 4.0.5).
+				Added activeId to allow setting and reading an &quot;active&quot; entity similar to <a href="https://opensource.salesforce.com/akita/docs/entities/active/">akita</a>.</p>
 				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
 					<h2>Why?</h2>
 				</a>
@@ -82,7 +76,7 @@
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> -</span><span style="color: #001080">s</span><span style="color: #000000"> </span><span style="color: #001080">svelte</span><span style="color: #000000">-</span><span style="color: #001080">entity</span><span style="color: #000000">-</span><span style="color: #001080">store</span>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> https:</span><span style="color: #008000">//github.com/AminoffZ/svelte-entity-store/releases/download/v1.0.4/svelte-entity-store-1.0.4.tgz</span>
 </code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
@@ -148,6 +142,14 @@
 					<h4>get(ids: ID[])</h4>
 				</a>
 				<p>Gets an array of specific entities by ID.  IDs will be ignored if they aren&#39;t found in the store - the array of entities returned may not be the same length as the <code>ids</code> array provided.</p>
+				<a href="#getactive" id="getactive" style="color: inherit; text-decoration: none;">
+					<h4>getActive()</h4>
+				</a>
+				<p>Gets the active entity.</p>
+				<a href="#getactiveid" id="getactiveid" style="color: inherit; text-decoration: none;">
+					<h4>getActiveId()</h4>
+				</a>
+				<p>Gets the ID of the active entity.</p>
 				<a href="#getpred-predicate" id="getpred-predicate" style="color: inherit; text-decoration: none;">
 					<h4>get(pred: Predicate<T>)</h4>
 				</a>
@@ -184,6 +186,14 @@
 					<h4>set(entities: T[])</h4>
 				</a>
 				<p>Works just like <code>set(entity: T)</code>, but for each item in the array.  This is useful when you ened to update more than one entity and don&#39;t want to trigger subscribers until all entities are added.</p>
+				<a href="#setactiveentityentity-t" id="setactiveentityentity-t" style="color: inherit; text-decoration: none;">
+					<h4>setActiveEntity(entity: T)</h4>
+				</a>
+				<p>Sets the active entity, takes the entity to set as active as an argument.</p>
+				<a href="#setactiveentityid-id" id="setactiveentityid-id" style="color: inherit; text-decoration: none;">
+					<h4>setActiveEntity(id: ID)</h4>
+				</a>
+				<p>Sets the active entity with its id as an argument.</p>
 				<a href="#entitystoresubscribe" id="entitystoresubscribe" style="color: inherit; text-decoration: none;">
 					<h3>entityStore.subscribe</h3>
 				</a>
