@@ -23,6 +23,31 @@ git clone https://github.com/AminoffZ/AminoffZ.github.io.git
 # Navigate to the directory
 cd AminoffZ.github.io
 
-# If you're using Jekyll or another static site generator, run the local server. Example for Jekyll:
-jekyll serve
+# Install the dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+### Building
+
+To build the site, run the following command:
+
+```bash
+npm run build
+```
+
+To preview the site after building, run the following command:
+
+```bash
+npm run preview
+```
+
+### Deploying
+
+To deploy the site, run the following command:
+
+```bash
+npm run deploy
 ```
