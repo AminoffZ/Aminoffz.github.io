@@ -52,7 +52,7 @@
 	</NavUl>
 </Navbar>
 
-<div style="min-height: calc(100vh - 71.99px);" class="flex flex-col justify-center align-middle">
+<div style="min-height: calc(100vh - 71.99px);" class="flex flex-col align-middle">
 	<slot />
 </div>
 

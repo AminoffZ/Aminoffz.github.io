@@ -2,6 +2,7 @@
 	import GitHubCard from '$lib/components/GitHubCard.svelte';
 	import ReadMe from '$lib/components/ReadMe.svelte';
 	import { getGitHubRepoReadMe } from '$lib/fetchers/github-fetcher';
+	import { TextPlaceholder } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	const user = import.meta.env.VITE_USER;
 	let data: string;
@@ -10,15 +11,24 @@
 	});
 </script>
 
-<div class="p-8 flex justify-center align-middle">
+<div style="margin: 5vw" class="flex items-center flex-col">
 	{#if data}
-		<ReadMe {data} />
+		<div class="flex justify-center w-full">
+			<ReadMe {data} />
+		</div>
 	{:else}
-		Loading...
+		<div class="flex-col flex w-full align-middle">
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+			<TextPlaceholder size="xxl" class=" px-12 w-full m-auto mt-10" />
+		</div>
 	{/if}
 </div>
 
-<div id="section-repos" class="p-24 flex gap-16 flex-wrap">
+<div id="section-repos" style="margin: 5vw" class="flex gap-16 flex-wrap">
 	<div class="card-wrapper">
 		<GitHubCard repoName="viaplay-keyboard-shortcuts" />
 	</div>

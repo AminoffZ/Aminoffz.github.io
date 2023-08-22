@@ -3,4 +3,6 @@
 	export let data: string;
 </script>
 
-<article class="prose">{@html marked(data)}</article>
+<article style="max-inline-size:40rem; min-inline-size: 24rem" class="prose">
+	{@html marked(data)}
+</article>

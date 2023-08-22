@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Card, Button } from 'flowbite-svelte';
-	import { Icon } from 'flowbite-svelte-icons';
-	import { getGitHub } from '../fetchers/github-fetcher';
 	import { navigate } from '$lib/helpers/navigator';
+	import { Button, Card, Spinner } from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
+	import { getGitHub } from '../fetchers/github-fetcher';
 	export let repoName = '';
 	export let hasDocs = false;
 	const user = import.meta.env.VITE_USER;
@@ -15,7 +15,7 @@
 
 {#if data}
 	<Card class="w-96">
-		<Icon name="github-solid" />
+		<Icon style="pointer-events: none" focusable="false" tabindex="-1" name="github-solid" />
 
 		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 			{data.name}
@@ -30,7 +30,12 @@
 				style="height: 40px"
 				class="h-10 w-24"
 			>
-				Docs <Icon name="arrow-right-outline" class="w-3.5 h-3.5 ml-2 text-white" />
+				Docs <Icon
+					focusable="false"
+					tabindex="-1"
+					name="arrow-right-outline"
+					class="w-3.5 h-3.5 ml-2 text-white"
+				/>
 			</Button>
 			<Button
 				color="dark"
@@ -38,10 +43,15 @@
 				class="w-28 h-10"
 			>
 				GitHub
-				<Icon name="arrow-right-outline" class="w-3.5 h-3.5 ml-2 text-white" />
+				<Icon
+					focusable="false"
+					tabindex="-1"
+					name="arrow-right-outline"
+					class="w-3.5 h-3.5 ml-2 text-white"
+				/>
 			</Button>
 		</div>
 	</Card>
 {:else}
-	<div>Loading...</div>
+	<Card class="w-96 h-48 flex items-center justify-center"><Spinner /></Card>
 {/if}

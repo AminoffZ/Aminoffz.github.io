@@ -9,3 +9,7 @@ footer > ul > button {
 html {
 	scroll-behavior: smooth;
 }
+
+button {
+	user-select: none;
+}
