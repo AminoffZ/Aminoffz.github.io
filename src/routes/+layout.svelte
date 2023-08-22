@@ -1,6 +1,5 @@
 <script lang="ts">
 	import PrivacyPolicy from '$lib/components/PrivacyPolicy.svelte';
-	import { getGitHub } from '$lib/fetchers/github-fetcher';
 	import {
 		Avatar,
 		Footer,
@@ -15,30 +14,18 @@
 	} from 'flowbite-svelte';
 	import '../app.css';
 	import '../app.postcss';
-	import { onMount } from 'svelte';
 	const user = import.meta.env.VITE_USER;
 	let clickOutsideModal = false;
-	let data: GitHubUser;
 	function setDestination() {
 		window.location.hash = 'section-repos';
 	}
-
-	onMount(async () => {
-		data = await getGitHub(user);
-	});
 </script>
 
 <Navbar class="sticky" let:hidden let:toggle>
 	<div class="flex gap-4">
-		{#if data}
-			<div class="ml-4">
-				<Avatar style="padding: 0" border src={data.avatar_url} />
-			</div>
-		{:else}
-			<div class="ml-4">
-				<Avatar style="padding: 0" border />
-			</div>
-		{/if}
+		<div class="ml-4">
+			<Avatar style="padding: 0" border src="/images/icons/icon_64x64_round.png" />
+		</div>
 		<NavBrand href="/">
 			<span class="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white"
 				>{user}</span
