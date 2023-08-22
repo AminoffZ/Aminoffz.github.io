@@ -10,7 +10,7 @@ Welcome to the official GitHub page of AminoffZ at [AminoffZ.github.io](https://
 
 ## 🛠️ Development
 
-If you're interested in the code that powers this site, it's open source! You can find it right here in this repository.
+If you're interested in the code that powers this site, it's open source! You can find it right here in [this repository](https://github.com/AminoffZ/Aminoffz.github.io).
 
 ### Local Development
 
