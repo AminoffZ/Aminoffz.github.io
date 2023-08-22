@@ -28,13 +28,12 @@
 </script>
 
 <iframe
-	style="min-height: calc(100vh - 71.99px);"
+	style="min-height: calc(100vh - 71.99px); overflow: hidden;"
 	title="doc"
 	id="doc"
 	src={`/docs/${repoName}/index.html`}
 	width="100%"
 	frameborder="0"
-	scrolling="no"
 />
 
 <svelte:window on:resize={setHeight} />
