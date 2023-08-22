@@ -14,7 +14,8 @@
 	} from 'flowbite-svelte';
 	import '../app.css';
 	import '../app.postcss';
-	const user = import.meta.env.VITE_USER;
+	import { base } from '$app/paths';
+	const user = import.meta.env.VITE_USER ?? 'AminoffZ';
 	let clickOutsideModal = false;
 	function setDestination() {
 		window.location.hash = 'section-repos';
@@ -24,9 +25,9 @@
 <Navbar class="sticky" let:hidden let:toggle>
 	<div class="flex gap-4">
 		<div class="ml-4">
-			<Avatar style="padding: 0" border src="/images/icons/icon_64x64_round.png" />
+			<Avatar style="padding: 0" border src={`${base}/images/icons/icon_64x64_round.png`} />
 		</div>
-		<NavBrand href="/">
+		<NavBrand href="{base}/">
 			<span class="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white"
 				>{user}</span
 			>
@@ -35,7 +36,7 @@
 
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi href="#section-repos" on:click={setDestination}>Repos</NavLi>
+		<NavLi href="{base}#section-repos" on:click={setDestination}>Repos</NavLi>
 	</NavUl>
 </Navbar>
 
@@ -65,4 +66,6 @@
 <svelte:head>
 	<title>AminoffZ</title>
 	<meta name="description" content="AminoffZ's personal website" />
+	<link rel="icon" href="{base}/favicon.png" type="image/x-icon" />
+	<link rel="manifest" href="{base}/manifest.json" />
 </svelte:head>

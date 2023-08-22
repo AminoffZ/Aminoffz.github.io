@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	export let repoName = '';
 	let interval: NodeJS.Timeout;
@@ -31,7 +32,7 @@
 	style="min-height: calc(100vh - 71.99px); overflow: hidden;"
 	title="doc"
 	id="doc"
-	src={`/docs/${repoName}/index.html`}
+	src={`${base}/docs/${repoName}/index.html`}
 	width="100%"
 	frameborder="0"
 />

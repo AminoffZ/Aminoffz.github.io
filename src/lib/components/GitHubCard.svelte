@@ -6,7 +6,7 @@
 	import { getGitHub } from '../fetchers/github-fetcher';
 	export let repoName = '';
 	export let hasDocs = false;
-	const user = import.meta.env.VITE_USER;
+	const user = import.meta.env.VITE_USER ?? 'AminoffZ';
 	let data: GitHubRepo;
 	onMount(async () => {
 		data = await getGitHub(user, repoName);

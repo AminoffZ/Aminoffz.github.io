@@ -4,7 +4,7 @@
 	import { getGitHubRepoReadMe } from '$lib/fetchers/github-fetcher';
 	import { TextPlaceholder } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
-	const user = import.meta.env.VITE_USER;
+	const user = import.meta.env.VITE_USER ?? 'AminoffZ';
 	let data: string;
 	onMount(async () => {
 		data = await getGitHubRepoReadMe(user, `${user}.github.io`);

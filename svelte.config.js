@@ -11,6 +11,9 @@ const config = {
 		prerender: {
 			handleMissingId: 'ignore'
 		},
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/Aminoffz.github.io' : ''
+		},
 		adapter: adapter()
 	}
 };

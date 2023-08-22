@@ -31,6 +31,7 @@ export async function getGitHubRepoReadMe(user: string, repo: string): Promise<s
 	const url = `https://api.github.com/repos/${user}/${repo}/contents/README.md?ref=main`;
 	const response = await fetch(url, getAuth());
 	const data = await response.json();
+
 	const decodedContent = base64Decode(data.content);
 	return decodedContent;
 }
