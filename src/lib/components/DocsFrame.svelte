@@ -4,6 +4,7 @@
 
 	export let repoName = '';
 	let interval: NodeJS.Timeout;
+	let heightSet = false;
 
 	function getIFrame() {
 		return document.getElementById('doc') as HTMLIFrameElement;
@@ -12,8 +13,14 @@
 	function setHeight() {
 		const iframe = getIFrame();
 		if (!iframe.contentWindow) return;
-		const scrollHeight = iframe.contentWindow.document.body.scrollHeight;
-		iframe.style.height = `${scrollHeight + 80}px`;
+		try {
+			const scrollHeight = iframe.contentWindow.document.body.scrollHeight;
+			iframe.style.height = `${scrollHeight + 80}px`;
+		} catch (e) {
+			console.error("Failed to set iframe's height");
+			return;
+		}
+		heightSet = true;
 	}
 
 	onMount(() => {
@@ -29,12 +36,15 @@
 </script>
 
 <iframe
-	style="min-height: calc(100vh - 71.99px); overflow: hidden;"
+	style="min-height: calc(100vh - 71.99px); opacity: {heightSet
+		? 1
+		: 0}; transition: opacity 0.5s ease-in-out}"
 	title="doc"
 	id="doc"
 	src={`${base}/docs/${repoName}/index.html`}
 	width="100%"
 	frameborder="0"
+	scrolling="no"
 />
 
 <svelte:window on:resize={setHeight} />
