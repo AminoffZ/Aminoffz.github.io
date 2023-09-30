@@ -9,7 +9,6 @@
  *
  * @returns Either the user data or repository data based on the parameters provided.
  */
-export async function getGitHub(user: string): Promise<GitHubUser>;
 export async function getGitHub(
   user: string,
   repo: string
@@ -57,7 +56,7 @@ function getAuth() {
 }
 
 function base64Decode(value: string) {
-  let decodedData = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
-  let decoder = new TextDecoder();
+  const decodedData = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
+  const decoder = new TextDecoder();
   return decoder.decode(decodedData);
 }

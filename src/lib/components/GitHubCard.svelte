@@ -1,26 +1,29 @@
 <script lang="ts">
-  import { navigate } from '$lib/helpers/navigator';
-  import { Button, Card, Spinner } from 'flowbite-svelte';
+  import { Card, Spinner } from 'flowbite-svelte';
   import { Icon } from 'flowbite-svelte-icons';
   import { onMount } from 'svelte';
   import { getGitHub } from '../fetchers/github-fetcher';
-  export let repoName = '';
-  export let hasDocs = false;
-  const user = import.meta.env.VITE_USER ?? 'AminoffZ';
+  export let owner: string;
+  export let repoName: string;
+  export let iconUrl: string = '';
   let data: GitHubRepo;
   onMount(async () => {
-    data = await getGitHub(user, repoName);
+    data = await getGitHub(owner, repoName);
   });
 </script>
 
 {#if data}
   <Card style="min-width: 12rem">
-    <Icon
-      style="pointer-events: none"
-      focusable="false"
-      tabindex="-1"
-      name="github-solid"
-    />
+    {#if iconUrl}
+      <img alt="icon" src={iconUrl} class="w-8 h-8" />
+    {:else}
+      <Icon
+        style="pointer-events: none"
+        focusable="false"
+        tabindex="-1"
+        name="github-solid"
+      />
+    {/if}
 
     <h5
       class="break-words mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -31,30 +34,7 @@
       {data.description}
     </p>
     <div class="flex gap-4 mt-auto flex-wrap">
-      <Button
-        disabled={!hasDocs}
-        on:click={() => navigate(`/${repoName}`)}
-        style="height: 40px"
-      >
-        Docs <Icon
-          focusable="false"
-          tabindex="-1"
-          name="arrow-right-outline"
-          class="w-3.5 h-3.5 ml-2 text-white"
-        />
-      </Button>
-      <Button
-        color="dark"
-        on:click={() => navigate(`https://github.com/${user}/${repoName}`)}
-      >
-        GitHub
-        <Icon
-          focusable="false"
-          tabindex="-1"
-          name="arrow-right-outline"
-          class="w-3.5 h-3.5 ml-2 text-white"
-        />
-      </Button>
+      <slot />
     </div>
   </Card>
 {:else}
