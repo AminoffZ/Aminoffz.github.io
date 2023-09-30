@@ -10,14 +10,20 @@
  * @returns Either the user data or repository data based on the parameters provided.
  */
 export async function getGitHub(user: string): Promise<GitHubUser>;
-export async function getGitHub(user: string, repo: string): Promise<GitHubRepo>;
-export async function getGitHub(user: string, repo?: string): Promise<GitHubUser | GitHubRepo> {
-	const url = repo
-		? `https://api.github.com/repos/${user}/${repo}`
-		: `https://api.github.com/users/${user}`;
-	const response = await fetch(url, getAuth());
-	const data = await response.json();
-	return data;
+export async function getGitHub(
+  user: string,
+  repo: string
+): Promise<GitHubRepo>;
+export async function getGitHub(
+  user: string,
+  repo?: string
+): Promise<GitHubUser | GitHubRepo> {
+  const url = repo
+    ? `https://api.github.com/repos/${user}/${repo}`
+    : `https://api.github.com/users/${user}`;
+  const response = await fetch(url, getAuth());
+  const data = await response.json();
+  return data;
 }
 
 /**
@@ -27,28 +33,31 @@ export async function getGitHub(user: string, repo?: string): Promise<GitHubUser
  * @param repo GitHub repository name
  * @returns Repository README.md file content
  */
-export async function getGitHubRepoReadMe(user: string, repo: string): Promise<string> {
-	const url = `https://api.github.com/repos/${user}/${repo}/contents/README.md?ref=main`;
-	const response = await fetch(url, getAuth());
-	const data = await response.json();
+export async function getGitHubRepoReadMe(
+  user: string,
+  repo: string
+): Promise<string> {
+  const url = `https://api.github.com/repos/${user}/${repo}/contents/README.md?ref=main`;
+  const response = await fetch(url, getAuth());
+  const data = await response.json();
 
-	const decodedContent = base64Decode(data.content);
-	return decodedContent;
+  const decodedContent = base64Decode(data.content);
+  return decodedContent;
 }
 
 function getAuth() {
-	if (import.meta.env.VITE_GITHUB_TOKEN) {
-		return {
-			headers: {
-				Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`
-			}
-		};
-	}
-	return {};
+  if (import.meta.env.VITE_GITHUB_TOKEN) {
+    return {
+      headers: {
+        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+      },
+    };
+  }
+  return {};
 }
 
 function base64Decode(value: string) {
-	let decodedData = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
-	let decoder = new TextDecoder();
-	return decoder.decode(decodedData);
+  let decodedData = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
+  let decoder = new TextDecoder();
+  return decoder.decode(decodedData);
 }

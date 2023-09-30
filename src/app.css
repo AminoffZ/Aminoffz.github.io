@@ -1,15 +1,15 @@
 footer > span {
-	text-align: center !important;
+  text-align: center !important;
 }
 
 footer > ul > button {
-	text-wrap: nowrap;
+  text-wrap: nowrap;
 }
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 button {
-	user-select: none;
+  user-select: none;
 }

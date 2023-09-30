@@ -8,5 +8,5 @@
  * @param url The url to navigate to.
  */
 export function navigate(url: string) {
-	window.location.href = url;
+  window.location.href = url;
 }
