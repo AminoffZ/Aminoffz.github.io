@@ -67,7 +67,7 @@
   <div class="card-wrapper">
     <GitHubCard
       owner="AminoffZ"
-      repoName="webpack-browser-extension-template"
+      repoName="bun-browser-extension-builder"
       iconUrl="https://raw.githubusercontent.com/AminoffZ/bun-browser-extension-builder/main/public/images/icon256.png"
     >
       <CardButton
