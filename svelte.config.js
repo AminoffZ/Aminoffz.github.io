@@ -11,9 +11,6 @@ const config = {
     prerender: {
       handleMissingId: 'ignore',
     },
-    paths: {
-      base: process.env.DEPLOY_GHPAGES ? '/Aminoffz.github.io' : '',
-    },
     adapter: adapter(),
   },
 };
